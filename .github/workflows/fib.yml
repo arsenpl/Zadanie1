@@ -18,7 +18,9 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: ghcr.io/${{ github.actor }}/zadanie1
+          images: |
+            ${{secrets.DOCKER_HUB_USERNAME}}/zadanie1
+            ghcr.io/${{ github.actor }}/zadanie1
           flavor: latest=true
           tags: |
             type=ref,event=branch
@@ -60,7 +62,7 @@ jobs:
           #  ghcr.io/${{ github.actor }}/zadanie1:latest
           tags: |
             ${{ steps.meta.outputs.tags }}
-            ghcr.io/${{ steps.meta.outputs.tags }}
+            ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
       
