@@ -3,8 +3,7 @@ name: FibCalc
 on:
   push:
     branches: [ main ]
-    tags:
-      - "v*-Zadanie1"
+    tags: [v*]
 
 jobs:
   build:
@@ -20,7 +19,7 @@ jobs:
         with:
           images: |
             arsenpl/zadanie1
-            ghcr.io/${{ github.actor }}/zadanie1
+            ghcr.io/arsenpl/zadanie1
           flavor: latest=true
           tags: |
             type=ref,event=branch
