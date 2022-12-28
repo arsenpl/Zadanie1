@@ -55,11 +55,11 @@ jobs:
           context: .
           file: Dockerfile
           push: true
-          #tags: | 
-          #  ${{secrets.DOCKER_HUB_USERNAME}}/zadanie1:latest
-          #  ghcr.io/${{ github.actor }}/zadanie1:latest
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: | 
+            ${{secrets.DOCKER_HUB_USERNAME}}/zadanie1:latest
+            ghcr.io/${{ github.actor }}/zadanie1:latest
+          #tags: ${{ steps.meta.outputs.tags }}
+          #labels: ${{ steps.meta.outputs.labels }}
 
       
       #Przenies cache'a
