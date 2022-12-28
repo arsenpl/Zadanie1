@@ -58,7 +58,9 @@ jobs:
           #tags: | 
           #  ${{secrets.DOCKER_HUB_USERNAME}}/zadanie1:latest
           #  ghcr.io/${{ github.actor }}/zadanie1:latest
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: |
+            ${{secrets.DOCKER_HUB_USERNAME}}/zadanie1:${{ steps.meta.outputs.tags }}
+            ghcr.io/${{ github.actor }}/zadanie1:latest:${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
       
