@@ -12,11 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
-      # Install a specific version of Node.js
-      - uses: actions/setup-node@v2
-        with:
-          version: '14.x'
-      
       - name: Buildx set-up
         id: buildx
         uses: docker/setup-buildx-action@v2.2.1
@@ -48,8 +43,10 @@ jobs:
           file: Dockerfile
           push: true
           tags: | 
-            ${{secrets.DOCKER_HUB_USERNAME}}/zadanie1:latest #${{ inputs.semver }}
-            ghcr.io/${{secrets.DOCKER_HUB_USERNAME}}/zadanie1:latest #${{ inputs.semver }}
+            arsenpl/zadanie1:latest
+            ghcr.io/arsenpl/zadanie1:latest
+            #${{secrets.DOCKER_HUB_USERNAME}}/zadanie1:latest #${{ inputs.semver }}
+            #ghcr.io/${{secrets.DOCKER_HUB_USERNAME}}/zadanie1:latest #${{ inputs.semver }}
       
       #Przenies cache'a
       - name: Move cache
