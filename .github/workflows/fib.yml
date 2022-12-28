@@ -45,8 +45,7 @@ jobs:
           tags: | 
             arsenpl/zadanie1:latest
             ghcr.io/arsenpl/zadanie1:latest
-            #${{secrets.DOCKER_HUB_USERNAME}}/zadanie1:latest #${{ inputs.semver }}
-            #ghcr.io/${{secrets.DOCKER_HUB_USERNAME}}/zadanie1:latest #${{ inputs.semver }}
+
       
       #Przenies cache'a
       - name: Move cache
