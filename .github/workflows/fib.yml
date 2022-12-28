@@ -15,7 +15,7 @@ jobs:
       # Install a specific version of Node.js
       - uses: actions/setup-node@v2
         with:
-          version: '18.x'
+          version: '14.x'
       
       - name: Buildx set-up
         id: buildx
@@ -30,8 +30,6 @@ jobs:
           username: ${{secrets.DOCKER_HUB_USERNAME}}
           password: ${{secrets.DOCKER_HUB_ACCESS_TOKEN}}
 
-
-
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
@@ -45,16 +43,15 @@ jobs:
           registry: ghcr.io
           repository: arsenpl/zadanie1
           tags: ${{ inputs.semver }}
-          
+      
       #Przenies cache'a
       - name: Move cache
         run: |
           rm -rf /tmp/.buildx-cache
           mv /tmp/.buildx-cache-new /tmp/.buildx-cache
-          
+
 # Define the semver input
 inputs:
   semver:
     description: 'The SemVer range of the image'
     required: true
-    default: '1.0.0'
