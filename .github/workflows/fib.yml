@@ -30,7 +30,6 @@ jobs:
           username: ${{secrets.DOCKER_HUB_USERNAME}}
           password: ${{secrets.DOCKER_HUB_ACCESS_TOKEN}}
 
-
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
@@ -43,7 +42,7 @@ jobs:
           push: true
           registry: ghcr.io
           repository: arsenpl/zadanie1
-          tags: ${{ inputs.semver }}
+          tags: ${{secrets.DOCKER_HUB_USERNAME}}/zadanie1:latest #${{ inputs.semver }}
       
       #Przenies cache'a
       - name: Move cache
