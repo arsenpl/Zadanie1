@@ -3,6 +3,8 @@ name: FibCalc
 on:
   push:
     branches: [ main ]
+    tags:
+      - "v*-Zadanie1"
 
 jobs:
   build:
@@ -11,6 +13,17 @@ jobs:
     
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ghcr.io/${{ github.actor }}/zadanie1
+          flavor: latest=true
+          tags: |
+            type=ref,event=branch
+            type=ref,event=pr
+            type=semver,pattern={{version}}
       
       - name: Buildx set-up
         id: buildx
@@ -42,9 +55,11 @@ jobs:
           context: .
           file: Dockerfile
           push: true
-          tags: | 
-            ${{secrets.DOCKER_HUB_USERNAME}}/zadanie1:latest
-            ghcr.io/${{ github.actor }}/zadanie1:latest
+          #tags: | 
+          #  ${{secrets.DOCKER_HUB_USERNAME}}/zadanie1:latest
+          #  ghcr.io/${{ github.actor }}/zadanie1:latest
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
 
       
       #Przenies cache'a
