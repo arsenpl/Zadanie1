@@ -50,8 +50,3 @@ jobs:
           rm -rf /tmp/.buildx-cache
           mv /tmp/.buildx-cache-new /tmp/.buildx-cache
 
-# Define the semver input
-inputs:
-  semver:
-    description: 'The SemVer range of the image'
-    required: true
