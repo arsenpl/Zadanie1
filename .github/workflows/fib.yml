@@ -43,7 +43,7 @@ jobs:
           file: Dockerfile
           push: true
           tags: | 
-            arsenpl/zadanie1:latest
+            ${{secrets.DOCKER_HUB_USERNAME}}/zadanie1:latest
             ghcr.io/arsenpl/zadanie1:latest
 
       
