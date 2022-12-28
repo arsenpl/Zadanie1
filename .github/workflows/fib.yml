@@ -17,7 +17,10 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: arsenpl/zadanie1
+          images: |
+            ${{secrets.DOCKER_HUB_USERNAME}}/zadanie1
+            ghcr.io/${{ github.actor }}/zadanie1
+            
           flavor: latest=true
           tags: |
             type=ref,event=branch
@@ -25,7 +28,6 @@ jobs:
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
       
-
       - name: Buildx set-up
         id: buildx
         uses: docker/setup-buildx-action@v2.2.1
