@@ -54,7 +54,7 @@ jobs:
           platforms: linux/amd64, linux/arm64
           context: .
           file: Dockerfile
-          push: true
+          push: ${{ github.ref_type == 'tag' }}
           #tags: | 
           #  ${{secrets.DOCKER_HUB_USERNAME}}/zadanie1:latest
           #  ghcr.io/${{ github.actor }}/zadanie1:latest
