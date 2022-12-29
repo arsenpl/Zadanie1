@@ -3,7 +3,8 @@ name: FibCalc
 on:
   push:
     branches: [ main ]
-    tags: [v*]
+    tags:
+      - 'v*'
 
 jobs:
   build:
@@ -18,9 +19,7 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: |
-            ${{secrets.DOCKER_HUB_USERNAME}}/zadanie1
-            ghcr.io/${{ github.actor }}/zadanie1
-          flavor: latest=true
+            arsenpl/zadanie1
           tags: |
             type=ref,event=branch
             type=ref,event=pr
